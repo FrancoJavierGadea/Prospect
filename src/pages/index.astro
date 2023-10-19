@@ -1,25 +1,42 @@
 ---
+import RootLayout from "../layouts/RootLayout.astro";
+
+import lucho from "../assets/lucho2.webp";
+
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Prospect</title>
-	</head>
-	<body>
-		<h1>Prospect</h1>
-	</body>
-</html>
 
+<RootLayout title="Prospect">
+
+	<img class="lucho" src={lucho.src} alt="">
+
+</RootLayout>
 
 <style>
-	h1 {
-		font-size: 80px;
-		font-weight: bold;
-		text-align: center;
+	.lucho {
+		display: block;
+		width: 900px;
+		margin: auto;
+
+		animation: fade-in 10s infinite;
 	}
+	
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+		70% {
+			opacity: 1;
+			scale: 1;
+		}
+		100% {
+			opacity: 0;
+			scale: 1.5;
+		}
+	}
+	
 </style>

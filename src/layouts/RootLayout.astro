@@ -1,0 +1,48 @@
+---
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
+import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js?url";
+import Navigation from "../components/Navigation.astro";
+
+import space from "../assets/space.jpg";
+
+const {title} = Astro.props;
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+
+		<title>{title}</title>
+	</head>
+	<body>
+		
+        <Navigation />
+
+        <slot />
+
+        <script src={bootstrap}></script>
+
+	</body>
+</html>
+
+
+<style is:global 
+
+    define:vars={{
+        "space": `url("${space.src}")`
+    }}
+>
+	
+    body {
+
+        background-image: var(--space);
+        background-repeat: no-repeat;
+        background-size: 150%;
+        background-blend-mode: multiply;
+    }
+
+
+</style>

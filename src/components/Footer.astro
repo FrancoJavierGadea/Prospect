@@ -1,0 +1,131 @@
+---
+import Logo from "../assets/logo.png";
+
+const LINKS = {
+    instagram: '#',
+    whatsapp: 'https://wa.me/5493812020962',
+    linkedin: '#',
+    mail: 'info@prospect.ar',
+    tel: '+54 9 381 202-0962'
+}
+
+const copyright = "© 2023 Prospect.ar - Todos los derechos reservados";
+---
+
+
+<footer class="Footer">
+
+    <section class="Footer-content container">
+
+        <div>
+            <img class="Footer-logo" src={Logo.src} alt="Logo de Prospect">
+
+            <ul class="Footer-links">
+                <li>
+                    <a href={LINKS.instagram} target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </li>
+    
+                <li>
+                    <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                </li>
+    
+            </ul>
+        </div>
+
+        <div class="Footer-contact">
+
+            <h2>Contacto: </h2>
+
+            <a href={`mailto:${LINKS.mail}`}>
+                <i class="bi bi-envelope"></i>
+                <span>{LINKS.mail}</span>
+            </a>
+             
+            <a href={`tel:${LINKS.tel}`}>
+                <i class="bi bi-telephone"></i>
+                <span>{LINKS.tel}</span>
+            </a>
+            
+        </div>
+
+
+    </section>
+    
+    <p class="Footer-copyright">{copyright}</p>
+</footer>
+
+
+<style>
+    .Footer {
+        background-color: var(--main-color);
+        padding-top: 30px;
+    }
+
+    .Footer-content {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px 50px;
+        padding-bottom: 30px;
+        border-bottom:  1px solid #fff;
+    }
+
+
+
+    .Footer-logo {
+        max-width: 200px;
+    }
+
+    .Footer-links {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }
+    .Footer-links a {
+        
+        color: #fff;
+        font-size: 18px;
+    }
+    .Footer-links a:hover .bi {  
+        transition: scale 0.5s;
+    }
+    .Footer-links a:hover .bi::before {
+        scale: 1.1;
+    }
+
+    .Footer-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .Footer-contact h2 {
+        color: #fff;
+    }
+    .Footer-contact a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 18px;
+    }
+    .Footer-contact a span {
+        padding-left: 10px;
+    }
+
+
+    .Footer-copyright {
+        padding: 10px;
+        text-align: center;
+        color: #fff;
+        margin: 0;
+    }
+</style>

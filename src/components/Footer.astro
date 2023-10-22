@@ -2,7 +2,8 @@
 import Logo from "../assets/logo.png";
 
 const LINKS = {
-    instagram: '#',
+    facebook: 'https://www.facebook.com/prospectar1/',
+    instagram: 'https://www.instagram.com/prospect.ar/',
     whatsapp: 'https://wa.me/5493812020962',
     linkedin: '#',
     mail: 'info@prospect.ar',
@@ -21,6 +22,12 @@ const copyright = "© 2023 Prospect.ar - Todos los derechos reservados";
             <img class="Footer-logo" src={Logo.src} alt="Logo de Prospect">
 
             <ul class="Footer-links">
+                <li>
+                    <a href={LINKS.facebook} target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                </li>
+
                 <li>
                     <a href={LINKS.instagram} target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-instagram"></i>
@@ -74,7 +81,8 @@ const copyright = "© 2023 Prospect.ar - Todos los derechos reservados";
     .Footer-content {
         display: flex;
         justify-content: space-around;
-        gap: 20px 50px;
+        flex-wrap: wrap-reverse;
+        gap: 50px;
         padding-bottom: 30px;
         border-bottom:  1px solid #fff;
     }

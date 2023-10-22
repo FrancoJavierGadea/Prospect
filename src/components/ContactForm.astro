@@ -1,0 +1,102 @@
+---
+
+---
+<contact-form>
+
+    <form>
+            
+        <div class="mb-3 flex-grow-1">
+            <label for="contact-form-firstname" class="form-label" data-lang="contact_form.form_firstname">Nombre</label>
+            <input type="text" class="form-control" id="contact-form-firstname" required name="name">
+        </div>
+    
+        <div class="mb-3">
+            <label for="contact-form-email" class="form-label" data-lang="contact_form.form_email">Correo electronico</label>
+            <input type="email" class="form-control" id="contact-form-email" required name="email">
+        </div>
+    
+        <div class="mb-3 flex-grow-1">
+            <label for="contact-form-phone" class="form-label" data-lang="contact_form.form_phone">Telefono</label>
+            <input type="text" class="form-control" id="contact-form-phone" required name="phone">
+        </div>
+    
+        <div class="mb-3">
+            <label for="contact-form-message" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="contact-form-message" rows="3" required name="message"></textarea>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="contact-form-check" required>
+            <label class="form-check-label" for="contact-form-check" data-lang="contact_form.form_check">He leído y acepto los Términos y Condiciones</label>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    
+    </form>
+
+</contact-form>
+
+<script>
+
+    import {send} from "@emailjs/browser";
+
+    class ContactForm extends HTMLElement {
+
+        sendMail(data = {}){ 
+
+            const service_id = import.meta.env.PUBLIC_EMAILJS_SERVICE;
+            const template_id = import.meta.env.PUBLIC_EMAILJS_TEMPLATE;
+            const public_key = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+
+            return send(service_id, template_id, {...data}, public_key);
+        }
+
+        constructor(){
+            super();
+
+            const $form = this.querySelector('form');
+
+            $form.addEventListener('submit', (e) => {
+
+                e.preventDefault();
+
+                const formdata = new FormData(e.currentTarget).entries();
+
+                const data = [...formdata].reduce((acc, [key, value]) => {
+
+                    acc[key] = value;
+
+                    return acc;
+
+                }, {});
+
+                this.sendMail(data)
+                .then((response) => {
+
+                    if(response.status === 200) {
+
+                        console.log('Email enviado correctamente');
+
+                        $form.reset();
+                    }   
+                });
+            });
+        }
+    }
+
+    customElements.define('contact-form', ContactForm);
+
+</script>
+
+
+<style>
+    
+    form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    form label {
+        color: #fff;
+        font-weight: bold;
+    }
+</style>
